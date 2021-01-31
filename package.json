@@ -11,7 +11,7 @@
     "dev": "npm-run-all --parallel watch livereload",
     "livereload": "livereload ./public/dist/",
     "permissions": "chown -R $USER:$USER bootstrap/cache storage public/uploads",
-    "start": "npm run dev"
+    "start": "npm run production"
   },
   "devDependencies": {
     "esbuild": "0.7.8",
