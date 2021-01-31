@@ -4,7 +4,7 @@
     "build:css:dev": "sass ./resources/sass:./public/dist",
     "build:css:watch": "sass ./resources/sass:./public/dist --watch",
     "build:css:production": "sass ./resources/sass:./public/dist -s compressed",
-    "build:js:dev": "esbuild --bundle ./resources/js/index.js --outfile=public/dist/app.js --sourcemap --target=es2019 --main-fields=module,main"
+    "build:js:dev": "esbuild --bundle ./resources/js/index.js --outfile=public/dist/app.js --sourcemap --target=es2019 --main-fields=module,main",
     "build:js:production": "NODE_ENV=production esbuild --bundle ./resources/js/index.js --outfile=public/dist/app.js --sourcemap --target=es2019 --main-fields=module,main --minify",
     "build": "npm-run-all --parallel build:*:dev",
     "production": "npm-run-all --parallel build:*:production",
