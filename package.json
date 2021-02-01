@@ -5,15 +5,19 @@
     "build:css:watch": "sass ./resources/sass:./public/dist --watch",
     "build:css:production": "sass ./resources/sass:./public/dist -s compressed",
     "build:js:dev": "esbuild --bundle ./resources/js/index.js --outfile=public/dist/app.js --sourcemap --target=es2019 --main-fields=module,main",
+    "build:js:watch": "chokidar --initial \"./resources/**/*.js\" -c \"npm run build:js:dev\"",
     "build:js:production": "NODE_ENV=production esbuild --bundle ./resources/js/index.js --outfile=public/dist/app.js --sourcemap --target=es2019 --main-fields=module,main --minify",
     "build": "npm-run-all --parallel build:*:dev",
     "production": "npm-run-all --parallel build:*:production",
     "dev": "npm-run-all --parallel watch livereload",
+    "watch": "npm-run-all --parallel build:*:watch",
     "livereload": "livereload ./public/dist/",
     "permissions": "chown -R $USER:$USER bootstrap/cache storage public/uploads",
-    "start": "npm run production"
+    "start": "SHELL='/bin/bash' npm run dev"
+
   },
   "devDependencies": {
+    "chokidar-cli": "^2.1.0",
     "esbuild": "0.7.8",
     "livereload": "^0.9.1",
     "npm-run-all": "^4.1.5",
@@ -27,12 +31,5 @@
     "markdown-it": "^11.0.1",
     "markdown-it-task-lists": "^2.1.1",
     "sortablejs": "^1.12.0"
-  },
-  "config": {
-    "nuxt": {
-      "host": "0.0.0.0",
-      "port": "3000",
-      "timing": false
-    }
   }
 }
